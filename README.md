@@ -48,7 +48,6 @@ Praticar conceitos fundamentais de desenvolvimento backend com Spring Boot, incl
 
 ## Melhorias futuras
 
-* Adicionar ID para usuários
 * Buscar usuário por ID
 * Atualizar usuário
 * Remover usuário
