@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.*;
 // Importa ArrayList e List do Java.
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 // Diz ao Spring que esta classe é um Controller REST.
 // Todos os retornos dos métodos serão enviados diretamente como resposta HTTP.
@@ -53,5 +57,24 @@ public class UsuarioController {
         // Retorna todos os usuários cadastrados.
         // O Spring converte a lista para JSON automaticamente.
         return usuarioList;
+    }
+
+    @PutMapping("/{id}")
+    public Usuario atualizar (
+        @PathVariable Integer id,
+         @RequestBody Usuario usuarioAtualizado) {
+        
+        for (Usuario usuario: usuarioList) {
+
+            if (usuario.getId().equals(id)) {
+
+                usuario.setNome(usuarioAtualizado.getNome());
+                usuario.setIdade(usuarioAtualizado.getIdade());
+                usuario.setEmail(usuarioAtualizado.getEmail());
+                usuario.setSenha(usuarioAtualizado.getSenha());
+                return usuario;
+            }
+        }
+        return null;
     }
 }
